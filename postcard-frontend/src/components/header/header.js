@@ -20,10 +20,10 @@ const Header = (props) => {
                       {
                           props.user ?
                               [
-                                  <Link key={"create"} className="mr-3 nav-item font-weight-bold nav-link text-dark" to={ROUTES.CREATE_POSTCARD}>Create postcard</Link>,
-                                  <Link key={"profile"} className="nav-item font-weight-bold nav-link text-dark" to={ROUTES.USER_PROFILE}>My profile</Link>
+                                  <Link key={"create"} className="mr-3 nav-item font-weight-bold nav-link text-dark item-line" to={ROUTES.CREATE_POSTCARD}>Create postcard</Link>,
+                                  <Link key={"profile"} className="nav-item font-weight-bold nav-link text-dark item-line" to={ROUTES.USER_PROFILE}>My profile</Link>
                               ]
-                              : <Link key={"login"} className="nav-item font-weight-bold nav-link text-dark" to={ROUTES.SIGN_IN}>Login</Link>
+                              : <Link key={"login"} className="nav-item font-weight-bold nav-link text-dark item-line" to={ROUTES.SIGN_IN}>Login</Link>
                       }
                   </Nav>
               </Navbar.Collapse>

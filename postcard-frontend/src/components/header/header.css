@@ -18,3 +18,9 @@
 .toggle-display {
    margin-left: 30%;
 }
+
+@media only screen and (max-width: 430px) {
+    .item-line {
+        border-top: rgba(211, 211, 211, 0.51) solid 1px;
+    }
+}

@@ -1,0 +1,37 @@
+.user-img {
+    width: 50%;
+    height: 50%;
+    margin-top: 5%;
+}
+
+.name-text {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #3d3d3d;
+}
+
+.bg-column {
+    border-right: #c4c4c4 solid 1px;
+    padding: 0 !important;
+}
+
+.no-deco {
+    border: none;
+    color: white;
+    font-weight: bold;
+    background: #d3d3d3;
+}
+
+.profile {
+    border-bottom: #c4c4c4 solid 1px;
+}
+
+.tab-info {
+    padding: 5% 0;
+    border-bottom: #c4c4c4 solid 1px;
+    background: #d3d3d3;
+}
+
+.mt-custom {
+    margin-top: 15%;
+}

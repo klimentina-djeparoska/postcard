@@ -1,0 +1,15 @@
+
+.menu-background {
+    background-color: antiquewhite;
+}
+
+.img-logo {
+  width: 5%;
+  height: 3%;
+}
+
+.list-change {
+    display: inline-block;
+    float: right;
+    margin-right: 5%;
+}

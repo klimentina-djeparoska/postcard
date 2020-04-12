@@ -1,0 +1,34 @@
+.small-type {
+    height: 384px;
+    width: 576px;
+    border: white dashed 2px;
+    background: rgba(139, 0, 0, 0.36);
+    /*#8b0000*/
+}
+
+
+.medium-type {
+    height: 480px;
+    width: 768px;
+    border: white dashed 2px;
+    background: rgba(49, 106, 56, 0.36);
+    /*#316a38*/
+}
+
+.large-type {
+    height: 576px;
+    width: 1056px;
+    border: white dotted 2px;
+    background: rgba(24, 50, 92, 0.44);
+    /*#173058*/
+}
+
+.type {
+
+}
+
+.custom-div {
+    margin: 0;
+    display: inline-block;
+    float: right;
+}

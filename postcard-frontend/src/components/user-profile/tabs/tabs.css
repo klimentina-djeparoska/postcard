@@ -1,0 +1,14 @@
+.received {
+    border: #3cc380 solid 1px;
+    background: rgba(60, 195, 128, 0.32);
+}
+
+.send {
+    border: #939393 solid 1px;
+    background: rgba(211, 211, 211, 0.32);
+}
+
+.create-btn {
+    font-weight: bold;
+    margin-top: 2%;
+}

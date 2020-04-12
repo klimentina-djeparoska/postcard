@@ -37,7 +37,7 @@ const FormikForm  = (props) => {
                                         <div>{
                                                 props.photo?
                                                     <div></div>
-                                                    : <div className="bt-submit">Uploading image ...</div>
+                                                    : <div className="bt-submit mb-lg-5">Uploading image ...</div>
                                             }
                                         </div>
                                         :<button type="submit" className="btn btn-secondary mb-lg-5 bt-submit">Submit</button>

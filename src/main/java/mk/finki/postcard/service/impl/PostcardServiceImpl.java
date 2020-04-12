@@ -24,7 +24,7 @@ public class PostcardServiceImpl implements PostcardService {
     }
 
     @Override
-    public Postcard savePostcard(String id,String user_id, String type, String message) {
+    public Postcard savePostcard(String id,String user_id, String type, String message, String font) {
 
         if (id == null || user_id == null || type == null) {
             throw new IllegalArgumentException();
@@ -33,7 +33,7 @@ public class PostcardServiceImpl implements PostcardService {
         //check if type exists
         PostcardType postcardType = this.postcardTypeRepository.findById(type).orElseThrow(InvalidPostcardTypeNotFoundException::new);
 
-        Postcard postcard = new Postcard(id, user_id, postcardType.getName(), message);
+        Postcard postcard = new Postcard(id, user_id, postcardType.getName(), message, font);
         return this.postcardRepository.save(postcard);
     }
 

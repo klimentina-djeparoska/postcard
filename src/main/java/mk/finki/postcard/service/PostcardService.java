@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface PostcardService {
 
-    Postcard savePostcard(String id, String user_id, String type, String message);
+    Postcard savePostcard(String id, String user_id, String type, String message, String font);
 
     List<Postcard> getAllPostcards(String user_id);
 

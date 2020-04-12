@@ -19,9 +19,9 @@ export async function savePostcard(postcard, user_uid) {
     const body = {
         id: uuidv4(),
         userId: user_uid,
-    //    type: postcard.postcardSize,
-        type: 'Small 4x6',
-        message: postcard.text
+        type: postcard.postcardSize,
+        message: postcard.text,
+        font: postcard.font
     };
 
     console.log("BODY:", body);

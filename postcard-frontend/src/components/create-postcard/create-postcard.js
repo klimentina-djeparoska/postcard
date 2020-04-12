@@ -8,6 +8,7 @@ import check from '../../assets/check.png';
 import * as ROUTES from "../constants/routes";
 import {Link} from "react-router-dom";
 import './create-postcard.css';
+import SelectFont from "./parts/select-font/select-font";
 
 class CreatePostcard extends Component{
     constructor(props) {
@@ -18,7 +19,7 @@ class CreatePostcard extends Component{
             postcard: {
                 orientation: 'vertical',
                 text: '',
-                font: '',
+                font: 'sans-serif',
                 postcardSize: 'Small 4x6',
             },
             address: {
@@ -65,7 +66,7 @@ class CreatePostcard extends Component{
     setPrice(size) {
         let value = 5;
 
-        if (size === "Medium 5x7") {
+        if (size === "Medium 5x8") {
             value = 7
         } else if (size === "Large 6x11") {
             value = 10;
@@ -153,30 +154,45 @@ class CreatePostcard extends Component{
 
     orderFinished() {
         const address = this.state.address;
-        console.log("ORDER");
-        console.log(this.state);
-        if(address.street && address.city && address.country && address.countryCode) {
-            const order = {
-                user_uid: this.props.user.uid,
-                postcard: this.state.postcard,
-                address: this.state.address,
-                image: this.state.image,
-                price: this.state.price
-            };
-            console.log(order);
 
-            saveOrder(order).then((res)=> {
-                if(res==="success") {
-                    this.setState({
-                        phase: 4
-                    });
-                }
-            });
+        if(parseInt(address.countryCode)) {
+            if(address.street && address.city && address.country && address.countryCode) {
+                const order = {
+                    user_uid: this.props.user.uid,
+                    postcard: this.state.postcard,
+                    address: this.state.address,
+                    image: this.state.image,
+                    price: this.state.price
+                };
+
+                saveOrder(order).then((res)=> {
+                    if(res==="success") {
+                        this.setState({
+                            phase: 4
+                        });
+                    }
+                });
+            } else {
+                alert(
+                    "Shipping address fields are mandatory!"
+                );
+            }
         } else {
-            alert(
-                "Shipping address fields are mandatory!"
-            );
+            alert("Postal code must be a number");
         }
+    }
+
+    fontChanged(e) {
+        const value = e.target.value.toLowerCase();
+        const postcard = {
+            orientation: this.state.postcard.orientation,
+            text: this.state.postcard.text,
+            font: value,
+            postcardSize: this.state.postcard.postcardSize
+        };
+        this.setState({
+            postcard: postcard
+        });
     }
 
     componentWillUnmount() {
@@ -199,8 +215,9 @@ class CreatePostcard extends Component{
                     : this.state.phase === 2? <div>
                         <p className="text-middle font-italic">Write your message below:</p>
                         <textarea rows="9" cols="50" onChange={e=> this.changeText(e)}></textarea>
+                        <SelectFont selectedFont={this.state.postcard.font} radioButtonChangeFont={e => this.fontChanged(e)}/>
                         <p className="text-middle font-italic"> Finished with your work? <br/>Click below to complete the order</p>
-                        <button className="btn btn-secondary" onClick={()=>this.onClick(2)}>Continue</button>
+                        <button className="btn btn-secondary mb-lg-5" onClick={()=>this.onClick(2)}>Continue</button>
                     </div>
                     : this.state.phase === 3 ?
                             <div>

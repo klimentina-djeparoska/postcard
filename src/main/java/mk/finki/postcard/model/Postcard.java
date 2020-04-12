@@ -19,5 +19,6 @@ public class Postcard {
     private String userId;
     private String type;
     private String message;
+    private String font;
 
 }

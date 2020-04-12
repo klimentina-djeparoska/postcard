@@ -29,7 +29,7 @@ public class PostcardApi {
                                    HttpServletResponse response) {
 
         Postcard result = this.postcardService.savePostcard(postcard.getId(), postcard.getUserId(),
-                postcard.getType(), postcard.getMessage());
+                postcard.getType(), postcard.getMessage(), postcard.getFont());
         response.setHeader("Location","/api/postcards/save");
 
         return result;

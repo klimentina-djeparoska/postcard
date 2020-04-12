@@ -1,5 +1,7 @@
 # postcard
 
+Project made for the Web Programming course on the Faculty of Computer Science and Engineering - Skopje, Macedonia
+
 Name and surname: Klimentina Djeparoska
 
 Index: 161525

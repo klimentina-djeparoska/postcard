@@ -4,12 +4,17 @@
 }
 
 .img-logo {
-  width: 5%;
-  height: 3%;
+  width: 35px;
+  height: 22px;
+}
+.brand-img {
+    margin-left: 25%;
 }
 
 .list-change {
-    display: inline-block;
-    float: right;
     margin-right: 5%;
+}
+
+.toggle-display {
+   margin-left: 30%;
 }

@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import "./tabs.css";
-import {getImageUrl} from '../../sanity/sanityClientApi';
 import {Link} from "react-router-dom";
 import {getImage} from "../../../repository/imageRepository";
 
@@ -57,7 +56,7 @@ const Orders = (props) => {
 };
 
 class DisplayImage extends Component {
- 
+
     constructor(props) {
         super(props);
         this.state = {imageUrl: null};

@@ -34,7 +34,7 @@ class App extends Component {
 
         <main role="main">
             <div>
-                <Route path={ROUTES.LANDING} exact render={() =><LandingPage/>}/>
+                <Route path={ROUTES.LANDING} exact render={() =><LandingPage user={this.state.user}/>}/>
                 <Route path={ROUTES.SIGN_IN} exact render={() =>(
                     this.state.user?
                         <Redirect to={{ pathname: ROUTES.USER_PROFILE}} />

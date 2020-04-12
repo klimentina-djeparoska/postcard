@@ -7,7 +7,7 @@ import first from "../../assets/birthday-wallpaper.jpg";
 import second from "../../assets/happy-new-year-text.jpg";
 import third from "../../assets/photo-of-2020.jpg";
 
-const LandingPage = () => {
+const LandingPage = (props) => {
     return (
         <div className="mt-lg-5">
             <Carousel1/>
@@ -17,10 +17,12 @@ const LandingPage = () => {
                         Personalize your own postcard <br/>
                         Show your friends and family, how much you care!
                     </p>
-                    <Link to={"/login"}><button className="btn btn-info create-btn">Create postcard</button></Link>
-
+                    {
+                        props.user?
+                            <Link to={"/create-postcard"}><button className="btn btn-info create-btn">Create postcard</button></Link>
+                            :<Link to={"/login"}><button className="btn btn-info create-btn">Create postcard</button></Link>
+                    }
                 </div>
-
             </div>
         </div>
     );

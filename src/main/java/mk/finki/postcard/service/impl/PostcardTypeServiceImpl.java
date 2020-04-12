@@ -24,6 +24,11 @@ public class PostcardTypeServiceImpl implements PostcardTypeService {
 
     @Override
     public PostcardType savePostcardType(String name, Integer width, Integer height, Integer numOfImages, String position) {
+
+        if (name == null) {
+            throw new IllegalArgumentException();
+        }
+
         PostcardType postcardType = new PostcardType(name, width, height, numOfImages, position);
         return this.postcardTypeRepository.save(postcardType);
     }

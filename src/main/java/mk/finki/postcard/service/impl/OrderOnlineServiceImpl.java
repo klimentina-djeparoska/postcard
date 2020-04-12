@@ -1,8 +1,11 @@
 package mk.finki.postcard.service.impl;
 
 import mk.finki.postcard.model.OrderOnline;
+import mk.finki.postcard.model.Postcard;
 import mk.finki.postcard.model.exceptions.InvalidOrderNotFoundException;
+import mk.finki.postcard.model.exceptions.InvalidPostcardNotFoundException;
 import mk.finki.postcard.repository.OrderOnlineRepository;
+import mk.finki.postcard.repository.PostcardRepository;
 import mk.finki.postcard.service.OrderOnlineService;
 import org.springframework.stereotype.Service;
 
@@ -12,14 +15,23 @@ import java.util.List;
 public class OrderOnlineServiceImpl implements OrderOnlineService {
 
     private final OrderOnlineRepository orderOnlineRepository;
+    private final PostcardRepository postcardRepository;
 
-    public OrderOnlineServiceImpl(OrderOnlineRepository orderOnlineRepository) {
+    public OrderOnlineServiceImpl(OrderOnlineRepository orderOnlineRepository, PostcardRepository postcardRepository) {
         this.orderOnlineRepository = orderOnlineRepository;
+        this.postcardRepository = postcardRepository;
     }
     @Override
     public OrderOnline saveOrder(String id, String user_id,String postcard_id, String street, String city, String country, int country_code, double price, String status) {
 
-        OrderOnline orderOnline = new OrderOnline(id, user_id, postcard_id, street, city, country, country_code, price, status);
+        if (id == null || user_id == null || postcard_id == null) {
+            throw new IllegalArgumentException();
+        }
+
+        //check if postcard exists
+        Postcard postcard = this.postcardRepository.findById(postcard_id).orElseThrow(InvalidPostcardNotFoundException::new);
+
+        OrderOnline orderOnline = new OrderOnline(id, user_id, postcard.getId(), street, city, country, country_code, price, status);
         return this.orderOnlineRepository.save(orderOnline);
     }
 

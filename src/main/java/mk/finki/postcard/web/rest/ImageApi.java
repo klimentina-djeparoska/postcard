@@ -5,6 +5,8 @@ import mk.finki.postcard.service.ImageService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping(path = "/api/images")
@@ -18,13 +20,12 @@ public class ImageApi {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Image saveImage(@RequestBody Image image) {
+    public Image saveImage(@RequestBody Image image,
+                            HttpServletResponse response) {
 
-        System.out.println("IMAGE");
-        System.out.println(image.getId());
-        System.out.println(image.getPostcardId());
-        System.out.println(image.getImage());
         Image result = this.imageService.saveImage(image.getId(), image.getPostcardId(), image.getImage());
+        response.setHeader("Location", "/api/images");
+
         return result;
     }
 

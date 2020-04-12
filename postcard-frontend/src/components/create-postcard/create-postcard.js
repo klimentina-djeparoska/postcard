@@ -26,7 +26,7 @@ class CreatePostcard extends Component{
                 country: '',
                 countryCode: ''
             },
-            price: 50,
+            price: 5,
             postcardTypes: [],
             phase: 1
         });
@@ -62,12 +62,12 @@ class CreatePostcard extends Component{
     };
 
     setPrice(size) {
-        let value = 50;
+        let value = 5;
 
         if (size === "Medium 5x7") {
-            value = 70
+            value = 7
         } else if (size === "Large 6x11") {
-            value = 100;
+            value = 10;
         }
 
         this.setState({

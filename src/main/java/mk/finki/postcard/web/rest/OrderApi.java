@@ -5,6 +5,7 @@ import mk.finki.postcard.service.OrderOnlineService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @RestController
@@ -20,12 +21,14 @@ public class OrderApi {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public OrderOnline saveOrder (@RequestBody OrderOnline requestOrder) {
+    public OrderOnline saveOrder (@RequestBody OrderOnline requestOrder,
+                                  HttpServletResponse response) {
 
         OrderOnline order = this.orderOnlineService.saveOrder(requestOrder.getId(), requestOrder.getUserId(),
                 requestOrder.getPostcardId(), requestOrder.getStreet(), requestOrder.getCity(), requestOrder.getCountry(),
                 requestOrder.getCountry_code(), requestOrder.getPrice(), requestOrder.getStatus());
 
+        response.setHeader("Location", "/api/orders");
         return order;
     }
 

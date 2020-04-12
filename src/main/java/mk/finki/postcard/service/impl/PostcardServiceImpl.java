@@ -1,8 +1,11 @@
 package mk.finki.postcard.service.impl;
 
 import mk.finki.postcard.model.Postcard;
+import mk.finki.postcard.model.PostcardType;
 import mk.finki.postcard.model.exceptions.InvalidPostcardNotFoundException;
+import mk.finki.postcard.model.exceptions.InvalidPostcardTypeNotFoundException;
 import mk.finki.postcard.repository.PostcardRepository;
+import mk.finki.postcard.repository.PostcardTypeRepository;
 import mk.finki.postcard.service.PostcardService;
 import org.springframework.stereotype.Service;
 
@@ -13,14 +16,24 @@ import java.util.UUID;
 public class PostcardServiceImpl implements PostcardService {
 
     private final PostcardRepository postcardRepository;
+    private final PostcardTypeRepository postcardTypeRepository;
 
-    public PostcardServiceImpl(PostcardRepository postcardRepository) {
+    public PostcardServiceImpl(PostcardRepository postcardRepository, PostcardTypeRepository postcardTypeRepository) {
         this.postcardRepository = postcardRepository;
+        this.postcardTypeRepository = postcardTypeRepository;
     }
 
     @Override
     public Postcard savePostcard(String id,String user_id, String type, String message) {
-        Postcard postcard = new Postcard(id, user_id, type, message);
+
+        if (id == null || user_id == null || type == null) {
+            throw new IllegalArgumentException();
+        }
+
+        //check if type exists
+        PostcardType postcardType = this.postcardTypeRepository.findById(type).orElseThrow(InvalidPostcardTypeNotFoundException::new);
+
+        Postcard postcard = new Postcard(id, user_id, postcardType.getName(), message);
         return this.postcardRepository.save(postcard);
     }
 

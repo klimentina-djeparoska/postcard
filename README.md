@@ -8,7 +8,7 @@ Index: 161525
 
 Project name: Postcard
 
-Techologies used: Spring, React, Postgresql, Firebase, Sanity
+Technologies used: Spring, React, Postgresql, Firebase, Sanity
 
 Start frontend:
 

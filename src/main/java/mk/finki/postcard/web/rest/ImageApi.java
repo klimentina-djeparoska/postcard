@@ -28,4 +28,9 @@ public class ImageApi {
         return result;
     }
 
+    @GetMapping(path = "/byPostcardId")
+    public Image getImageByPostcardId(@RequestParam String postcardId) {
+        return this.imageService.getAllImagesForPostcard(postcardId).get(0);
+    }
+
 }

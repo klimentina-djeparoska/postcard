@@ -1,7 +1,8 @@
-import React from "react";
+import React, {Component} from "react";
 import "./tabs.css";
 import {getImageUrl} from '../../sanity/sanityClientApi';
 import {Link} from "react-router-dom";
+import {getImage} from "../../../repository/imageRepository";
 
 const Orders = (props) => {
     return (
@@ -13,7 +14,7 @@ const Orders = (props) => {
                                 <p className="text-middle font-italic mt-lg-5">Here are your orders so far:</p>
                                 : <div className="mt-lg-5">
                                     <p className="text-middle font-italic">You haven't made any order yet <br/> Make your first order </p>
-                                    <Link to={"/login"} className="mb-lg-5"><button className="btn btn-info create-btn">Create postcard</button></Link>
+                                    <Link to={"/create-postcard"} className="mb-lg-5"><button className="btn btn-info create-btn">Create postcard</button></Link>
                                 </div>
                         }
 
@@ -41,7 +42,7 @@ const Orders = (props) => {
                                 </div>
                             </div>
                             <div className="col-6 border border-left-0">
-                                <img src={getImageUrl("image image-493b19b61ec26aea94358c7f356c9dd910e01e96-6000x4000-jpg")} alt={order.image}/>
+                                <DisplayImage postcardId={order.postcardId}/>
                                 <div>
                                     <p className="text-middle font-italic"> Status:</p>
                                     <div className={order.status}>{order.status}</div>
@@ -54,5 +55,29 @@ const Orders = (props) => {
             : <p>Loading..</p>
     );
 };
+
+class DisplayImage extends Component {
+ 
+    constructor(props) {
+        super(props);
+        this.state = {imageUrl: null};
+    }
+
+    componentDidMount() {
+        getImage(this.props.postcardId).then(res => {
+            this.setState({
+                imageUrl: res
+            });
+        });
+    }
+
+    render(){
+        return (
+            this.state.imageUrl?
+                <img src={this.state.imageUrl} alt={this.props.postcardId}/>
+                : <div>Loading..</div>
+      );
+    }
+}
 
 export default Orders;

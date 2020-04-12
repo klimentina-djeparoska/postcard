@@ -28,6 +28,9 @@ const ShippingAddress = (props) => {
                     <FormFields onChange={(e)=> props.onShippingAddressChange(e)}/>
                 </form>
             </div>
+            <div className="mt-lg-5">
+                <p className="text-middle font-italic">Price: {props.price} eur.</p>
+            </div>
         </div>
     );
 };

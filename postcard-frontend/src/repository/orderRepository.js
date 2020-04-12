@@ -10,10 +10,8 @@ export async function saveOrder(order) {
     //save postcard
     const postcard = await savePostcard(order.postcard, order.user_uid);
 
-    debugger;
-    console.log(postcard.id);
     // save image id
-    saveImage([postcard.id, order.image]);
+    saveImage([postcard.id, order.image]).then(res => console.log(res));
 
     const orderObject = {
         id: uuidv4(),
@@ -23,8 +21,8 @@ export async function saveOrder(order) {
         city: order.address.city,
         country: order.address.country,
         country_code: order.address.countryCode,
-        price: 100.00,
-        status: "received"
+        price: order.price,
+        status: "ordered"
     };
 
     const requestOptions = {

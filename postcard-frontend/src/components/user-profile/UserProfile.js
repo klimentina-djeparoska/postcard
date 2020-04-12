@@ -48,7 +48,7 @@ class UserProfile extends Component {
                             <p className="name-text">{this.props.user.displayName}</p>
                         </div>
                         {/*<div className="tab-info">
-                            <button className="no-deco" onClick={()=>this.onClickHandle('personalInfo')}>Personal info</button>
+                            <button className="no-deco" onClick={()=>this.onClickHandle('personalInfo')}>Saved address</button>
                         </div>*/}
                         <div className="tab-info">
                             <button className="no-deco" onClick={()=>this.onClickHandle('orders')}>Orders</button>

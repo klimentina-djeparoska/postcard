@@ -26,6 +26,7 @@ class CreatePostcard extends Component{
                 country: '',
                 countryCode: ''
             },
+            price: 50,
             postcardTypes: [],
             phase: 1
         });
@@ -33,11 +34,15 @@ class CreatePostcard extends Component{
     }
 
     componentDidMount() {
-        getPostcardTypes().then((types)=> {
+        const res = getPostcardTypes();
+        this.setState({
+            postcardTypes: res
+        });
+            /*.then((types)=> {
             this.setState( {
                 postcardTypes: types
             });
-        }).catch(error => console.error(error.message));
+        }).catch(error => console.error(error.message));*/
     }
 
     handleRadioChange(e) {
@@ -49,10 +54,27 @@ class CreatePostcard extends Component{
             postcardSize: value
         };
 
+        this.setPrice(value);
+
         this.setState({
             postcard: postcard
         });
     };
+
+    setPrice(size) {
+        let value = 50;
+
+        if (size === "Medium 5x7") {
+            value = 70
+        } else if (size === "Large 6x11") {
+            value = 100;
+        }
+
+        this.setState({
+            price: value
+        });
+    }
+
 
     handleImageSubmit(photoId) {
         this.setState({
@@ -137,7 +159,8 @@ class CreatePostcard extends Component{
                 user_uid: this.props.user.uid,
                 postcard: this.state.postcard,
                 address: this.state.address,
-                image: this.state.image
+                image: this.state.image,
+                price: this.state.price
             };
             console.log(order);
 
@@ -180,7 +203,7 @@ class CreatePostcard extends Component{
                     </div>
                     : this.state.phase === 3 ?
                             <div>
-                                <ShippingAddress address={this.state.address}  onShippingAddressChange={(e)=> this.handleAddressChange(e)}/>
+                                <ShippingAddress address={this.state.address} price={this.state.price} onShippingAddressChange={(e)=> this.handleAddressChange(e)}/>
                                 <p className="text-middle font-italic">Make your order now</p>
                                 <button className="btn btn-secondary" onClick={()=>this.orderFinished()}>Order</button>
                             </div>

@@ -9,6 +9,7 @@ import * as ROUTES from "../constants/routes";
 import {Link} from "react-router-dom";
 import './create-postcard.css';
 import SelectFont from "./parts/select-font/select-font";
+import './parts/select-font/select-font.css';
 
 class CreatePostcard extends Component{
     constructor(props) {
@@ -214,10 +215,10 @@ class CreatePostcard extends Component{
                 </div>
                     : this.state.phase === 2? <div>
                         <p className="text-middle font-italic">Write your message below:</p>
-                        <textarea rows="9" cols="50" onChange={e=> this.changeText(e)}></textarea>
+                        <textarea className={this.state.postcard.font} rows="9" cols="50" onChange={e=> this.changeText(e)}></textarea>
                         <SelectFont selectedFont={this.state.postcard.font} radioButtonChangeFont={e => this.fontChanged(e)}/>
                         <p className="text-middle font-italic"> Finished with your work? <br/>Click below to complete the order</p>
-                        <button className="btn btn-secondary mb-lg-5" onClick={()=>this.onClick(2)}>Continue</button>
+                        <button className="btn btn-secondary mb-lg-5 bt-continue" onClick={()=>this.onClick(2)}>Continue</button>
                     </div>
                     : this.state.phase === 3 ?
                             <div>

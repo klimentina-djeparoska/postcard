@@ -1,0 +1,13 @@
+@media only screen and (max-width: 430px) {
+    textarea {
+        max-width: 355px;
+    }
+
+    .bt-continue {
+        margin-bottom: 10%;
+    }
+
+    .small-img {
+        max-width: 355px;
+    }
+}

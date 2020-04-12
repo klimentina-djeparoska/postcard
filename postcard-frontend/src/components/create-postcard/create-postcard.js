@@ -7,6 +7,7 @@ import {saveOrder} from '../../repository/orderRepository';
 import check from '../../assets/check.png';
 import * as ROUTES from "../constants/routes";
 import {Link} from "react-router-dom";
+import './create-postcard.css';
 
 class CreatePostcard extends Component{
     constructor(props) {
@@ -192,7 +193,7 @@ class CreatePostcard extends Component{
                     <SelectPostcardType selected={this.state.postcard.postcardSize} types={this.state.postcardTypes} radioButtonChange={(e)=> this.handleRadioChange(e)}/>
                     <FormikForm photo={this.state.image} imageSubmit={this.state.imageSubmit} onSubmit={(e)=>this.handleImageSubmit(e)} onSubmitCheck={()=> this.imageSubmitCheck()}/>
                     {this.state.image?
-                    <button className="btn btn-secondary mb-lg-5" onClick={()=> this.onClick(1)}>Continue</button>
+                    <button className="btn btn-secondary mb-lg-5 bt-continue" onClick={()=> this.onClick(1)}>Continue</button>
                         : <div></div>}
                 </div>
                     : this.state.phase === 2? <div>
@@ -208,7 +209,7 @@ class CreatePostcard extends Component{
                                 <button className="btn btn-secondary" onClick={()=>this.orderFinished()}>Order</button>
                             </div>
                             : <div className="mt-lg-5">
-                                <img src={check} alt="success"/>
+                                <img className="small-img" src={check} alt="success"/>
                                 <p className="text-middle font-italic">
                                     Thank you for choosing us. <br/> Your order is received. <br/> You can check the status of the orders on your profile
                                 </p>

@@ -73,7 +73,7 @@ class DisplayImage extends Component {
     render(){
         return (
             this.state.imageUrl?
-                <img src={this.state.imageUrl} alt={this.props.postcardId}/>
+                <img className="show-img" src={this.state.imageUrl} alt={this.props.postcardId}/>
                 : <div>Loading..</div>
       );
     }

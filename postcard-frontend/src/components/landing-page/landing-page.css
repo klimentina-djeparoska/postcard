@@ -18,3 +18,13 @@
 .slider-bg {
     background: rgba(151, 151, 151, 0.34);
 }
+
+
+@media only screen and (max-width: 600px) {
+    .text-wrapper {
+        margin-top: 10%;
+    }
+    .slider-bg {
+        margin-top: 15%;
+    }
+}

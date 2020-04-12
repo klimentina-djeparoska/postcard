@@ -23,12 +23,53 @@
     /*#173058*/
 }
 
-.type {
-
-}
-
 .custom-div {
     margin: 0;
     display: inline-block;
     float: right;
+}
+
+@media only screen and (max-width: 430px) {
+    .large-type {
+        height: 230px;
+        width: 350px;
+    }
+    .medium-type {
+        height: 170px;
+        width: 300px;
+    }
+    .small-type {
+        height: 120px;
+        width: 220px;
+    }
+}
+
+@media only screen and ( min-width: 435px) and (max-width: 990px) {
+    .large-type {
+        height: 430px;
+        width: 650px;
+    }
+    .medium-type {
+        height: 320px;
+        width: 450px;
+    }
+    .small-type {
+        height: 260px;
+        width: 320px;
+    }
+}
+
+@media only screen and ( min-width: 1000px) and (max-width: 1300px) {
+    .large-type {
+        height: 430px;
+        width: 750px;
+    }
+    .medium-type {
+        height: 320px;
+        width: 500px;
+    }
+    .small-type {
+        height: 260px;
+        width: 320px;
+    }
 }

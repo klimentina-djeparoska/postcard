@@ -12,7 +12,7 @@ const LandingPage = (props) => {
         <div className="mt-lg-5">
             <Carousel1/>
             <div className="container">
-                <div>
+                <div className="text-wrapper">
                     <p className="text-middle">
                         Personalize your own postcard <br/>
                         Show your friends and family, how much you care!

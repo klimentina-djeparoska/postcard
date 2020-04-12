@@ -3,6 +3,7 @@ import yupObject from "yup/lib/object";
 import yupMixed from "yup/lib/mixed";
 import React from "react";
 import {saveImageSanity} from "../../../sanity/sanityClientApi";
+import './formik-form.css';
 
 
 const FormikForm  = (props) => {
@@ -25,7 +26,7 @@ const FormikForm  = (props) => {
                         return (
                             <form onSubmit={handleSubmit}>
                                 <div className="form-group">
-                                    <label htmlFor="file">File upload</label>
+                                    <label htmlFor="file" className="font-weight-bold">File upload</label>
                                     <input id="file" name="file" type="file" onChange={(event) => {
                                         setFieldValue("file", event.currentTarget.files[0]);
                                     }} className="form-control" />
@@ -36,10 +37,10 @@ const FormikForm  = (props) => {
                                         <div>{
                                                 props.photo?
                                                     <div></div>
-                                                    : <div>Uploading image ...</div>
+                                                    : <div className="bt-submit">Uploading image ...</div>
                                             }
                                         </div>
-                                        :<button type="submit" className="btn btn-secondary mb-lg-5">Submit</button>
+                                        :<button type="submit" className="btn btn-secondary mb-lg-5 bt-submit">Submit</button>
                                 }
                             </form>
                         );

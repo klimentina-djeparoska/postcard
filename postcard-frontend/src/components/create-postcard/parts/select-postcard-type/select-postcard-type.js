@@ -27,12 +27,14 @@ const SelectPostcardType = (props) => {
 
 const SizeImage = () => {
     return (
-        <div className="type large-type">
-            <p className="text-middle text-white">Large 6x11</p>
-            <div className="type medium-type custom-div">
-                <p className="text-middle text-white">Middle 5x8</p>
-                <div className="type small-type custom-div">
-                    <p className="text-middle text-white">Small 4x6</p>
+        <div className="align-content-center">
+            <div className="type large-type">
+                <p className="text-middle text-white">Large 6x11</p>
+                <div className="type medium-type custom-div">
+                    <p className="text-middle text-white">Middle 5x8</p>
+                    <div className="type small-type custom-div">
+                        <p className="text-middle text-white">Small 4x6</p>
+                    </div>
                 </div>
             </div>
         </div>

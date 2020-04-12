@@ -55,15 +55,14 @@ class SignInPage extends Component {
 
         return (
             <div>
-                <img className="login-img" src={login} alt="login-icon"/>
-                <div className="align-content-center">
+                <div className="wrapper">
+                    <img className="login-img" src={login} alt="login-icon"/>
+                    <div className="align-content-center">
 
-                    <h6 className="text-login">Login to create <br/>your <span className="font-weight-bold">personalized</span> postcard</h6>
+                        <h6 className="text-login">Login to create <br/>your <span className="font-weight-bold">personalized</span> postcard</h6>
 
+                    </div>
                 </div>
-
-
-
 
             <form onSubmit={this.onSubmit}>
                 <button className="btn btn-dark" type="submit">Sign In with Google</button>

@@ -12,3 +12,13 @@
     font-weight: bold;
     margin-top: 2%;
 }
+
+@media only screen and (max-width: 430px) {
+    .bt-continue {
+        margin-bottom: 10%;
+    }
+    .show-img {
+        margin-top: 10px;
+        max-width: 100%;
+    }
+}

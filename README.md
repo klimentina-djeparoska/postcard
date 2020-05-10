@@ -21,4 +21,5 @@ Create a customizable postcard online and we will print and send it for you. You
 upload your photo and add some message. Add a shipping address or choose from previously saved address and you are good to go. On your profile you can view and delete your saved addresses, view your orders and their status(ordered, send, received), sort the orders by some property for better overview.
 
 
-*** I tried to implement payment option (with credit card) using Stripe libraby, but since I am not a company I only managed to get half way through. It is implemented until some point, but not tested since it required bussiness account.
+
+*** I tried to implement payment option (with credit card) using Stripe library, but since I am not a company I only managed to get half way through. It is implemented until some point, but not tested since it required bussiness account.

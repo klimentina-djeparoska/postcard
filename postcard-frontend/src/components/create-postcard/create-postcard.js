@@ -31,7 +31,8 @@ class CreatePostcard extends Component{
             },
             price: 5,
             postcardTypes: [],
-            phase: 1
+            phase: 1,
+            savedOrder: null
         });
         this.controller = new AbortController();
     }
@@ -172,9 +173,10 @@ class CreatePostcard extends Component{
             };
 
             saveOrder(order).then((res)=> {
-                if(res==="success") {
+                if(res) {
                     this.setState({
-                        phase: 4
+                        phase: 4,
+                        savedOrder: res
                     });
                 }
             });

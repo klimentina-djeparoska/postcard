@@ -22,7 +22,6 @@ public class AddressApi {
     @PostMapping(path = "/save")
     public Address saveAddress(@RequestBody  Address address,
                                HttpServletResponse response) {
-        System.out.println("ADDRESS " + address);
 
         Address address1 = this.addressService.saveAddress(address.getId(), address.getUserId(), address.getStreet(),
                 address.getCity(), address.getCountry(), address.getPostalCode());

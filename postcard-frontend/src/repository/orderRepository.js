@@ -33,7 +33,7 @@ export async function saveOrder(order) {
     };
     return fetch(orderUrl, requestOptions)
         .then(response => response.json()).then((res)=>{
-            return "success";
+            return res;
         })
         .catch(error => console.error(error.message));
 }

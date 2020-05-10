@@ -2,11 +2,12 @@ package mk.finki.postcard.service;
 
 import mk.finki.postcard.model.OrderOnline;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 public interface OrderOnlineService {
     OrderOnline saveOrder(String id, String user_id, String postcard, String street, String city, String country,
-                    int postalCode, double price, String status);
+                          int postalCode, double price, String status, Timestamp date);
 
     List<OrderOnline> getAllOrdersForUser(String user_id);
 

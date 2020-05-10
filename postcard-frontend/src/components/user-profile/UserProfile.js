@@ -59,7 +59,13 @@ class UserProfile extends Component {
         }
         this.setState({
             addresses: result
-        })
+        });
+    }
+
+    sortedOrders(orders) {
+        this.setState({
+            orders: orders
+        });
     }
 
 
@@ -88,7 +94,7 @@ class UserProfile extends Component {
                             (this.state.activeTab === 'addresses') ?
                                 <Addresses deleteSpecificAddress={address => this.deleteAddress(address)} addresses={this.state.addresses}/>
                                 :(this.state.activeTab === 'orders') ?
-                                        <Orders orders={this.state.orders}/>
+                                        <Orders updateOrders={orders => this.sortedOrders(orders)} orders={this.state.orders}/>
                                         :<General/>
                         }
                     </div>

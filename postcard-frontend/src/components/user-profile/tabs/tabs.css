@@ -8,6 +8,11 @@
     background: rgba(211, 211, 211, 0.32);
 }
 
+.send {
+    border: rgba(231, 0, 0, 0.25) solid 1px;
+    background: rgba(231, 0, 0, 0.10);
+}
+
 .create-btn {
     font-weight: bold;
     margin-top: 2%;
@@ -34,4 +39,9 @@
     width: 100%;
     display: inline-flex;
     flex-wrap: wrap;
+}
+
+.add-border {
+    border: solid 1px #dee2e6;
+    border-left: none;
 }

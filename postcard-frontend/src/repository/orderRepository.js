@@ -13,6 +13,7 @@ export async function saveOrder(order) {
     // save image id
     saveImage([postcard.id, order.image]).then(res => console.log(res));
 
+    const date = new Date();
     const orderObject = {
         id: uuidv4(),
         userId: order.user_uid,
@@ -22,7 +23,8 @@ export async function saveOrder(order) {
         country: order.address.country,
         postalCode: order.address.postalCode,
         price: order.price,
-        status: "ordered"
+        status: "ordered",
+        date: date
     };
 
     const requestOptions = {

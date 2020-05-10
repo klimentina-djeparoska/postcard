@@ -2,7 +2,7 @@ import React from "react";
 import './tabs.css';
 
 export const Address = (props) => {
-    return (<div className="custom-address">
+    return (<div>
         <p className="text-middle font-italic mb-lg-5">Shipping address:</p>
         <div className="row">
             <label className="col-4 font-italic">Street address: </label>
@@ -42,7 +42,9 @@ const Addresses = (props) => {
                         </div>
                         <div className="custom-row">
                             { props.addresses.map(address =>
-                                <Address addressTab={true} deleteAddress={e => props.deleteSpecificAddress(e)} key={address.street+address.city} address={address}/>
+                                <div className="custom-address">
+                                    <Address addressTab={true} deleteAddress={e => props.deleteSpecificAddress(e)} key={address.street+address.city} address={address}/>
+                                </div>
                             )}
                         </div>
                     </div>:

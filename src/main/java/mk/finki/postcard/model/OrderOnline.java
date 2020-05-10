@@ -4,6 +4,8 @@ package mk.finki.postcard.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.Date;
 
 @Entity
 @Table(name = "orderitem")
@@ -27,4 +29,5 @@ public class OrderOnline {
     private  int postalCode;
     private double price;
     private String status; // order received, made, send, delivered
+    private Timestamp date;
 }

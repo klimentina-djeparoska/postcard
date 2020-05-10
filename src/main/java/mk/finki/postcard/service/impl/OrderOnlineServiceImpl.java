@@ -9,6 +9,7 @@ import mk.finki.postcard.repository.PostcardRepository;
 import mk.finki.postcard.service.OrderOnlineService;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Service
@@ -22,7 +23,7 @@ public class OrderOnlineServiceImpl implements OrderOnlineService {
         this.postcardRepository = postcardRepository;
     }
     @Override
-    public OrderOnline saveOrder(String id, String user_id,String postcard_id, String street, String city, String country, int postalCode, double price, String status) {
+    public OrderOnline saveOrder(String id, String user_id, String postcard_id, String street, String city, String country, int postalCode, double price, String status, Timestamp date) {
 
         if (id == null || user_id == null || postcard_id == null) {
             throw new IllegalArgumentException();
@@ -31,7 +32,7 @@ public class OrderOnlineServiceImpl implements OrderOnlineService {
         //check if postcard exists
         Postcard postcard = this.postcardRepository.findById(postcard_id).orElseThrow(InvalidPostcardNotFoundException::new);
 
-        OrderOnline orderOnline = new OrderOnline(id, user_id, postcard.getId(), street, city, country, postalCode, price, status);
+        OrderOnline orderOnline = new OrderOnline(id, user_id, postcard.getId(), street, city, country, postalCode, price, status, date);
         return this.orderOnlineRepository.save(orderOnline);
     }
 

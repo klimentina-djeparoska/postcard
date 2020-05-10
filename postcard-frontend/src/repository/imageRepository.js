@@ -8,10 +8,8 @@ export function getImage(postcardId) {
     const imageUrl = url + '/byPostcardId?postcardId=' + postcardId;
 
     const res = fetch(imageUrl).then(res => res.json()).then(result => {
-        console.log(result);
         return result.image;
     }).catch(error => console.error(error));
-    console.log(res);
     return res;
 }
 
@@ -25,7 +23,6 @@ export async function saveImage([postcardId, image1]) {
         postcardId: postcardId,
         image: imageUrl
     };
-    console.log(image);
 
     const requestOptions = {
         method: "POST",
@@ -35,7 +32,6 @@ export async function saveImage([postcardId, image1]) {
     };
 
     return fetch(url, requestOptions).then(res => res.json()).then(result => {
-        console.log('image saved');
         return result;
     }).catch(err => console.error(err.message));
 }

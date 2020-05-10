@@ -22,7 +22,7 @@ public class OrderOnlineServiceImpl implements OrderOnlineService {
         this.postcardRepository = postcardRepository;
     }
     @Override
-    public OrderOnline saveOrder(String id, String user_id,String postcard_id, String street, String city, String country, int country_code, double price, String status) {
+    public OrderOnline saveOrder(String id, String user_id,String postcard_id, String street, String city, String country, int postalCode, double price, String status) {
 
         if (id == null || user_id == null || postcard_id == null) {
             throw new IllegalArgumentException();
@@ -31,7 +31,7 @@ public class OrderOnlineServiceImpl implements OrderOnlineService {
         //check if postcard exists
         Postcard postcard = this.postcardRepository.findById(postcard_id).orElseThrow(InvalidPostcardNotFoundException::new);
 
-        OrderOnline orderOnline = new OrderOnline(id, user_id, postcard.getId(), street, city, country, country_code, price, status);
+        OrderOnline orderOnline = new OrderOnline(id, user_id, postcard.getId(), street, city, country, postalCode, price, status);
         return this.orderOnlineRepository.save(orderOnline);
     }
 

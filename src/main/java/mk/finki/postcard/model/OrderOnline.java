@@ -23,7 +23,8 @@ public class OrderOnline {
     private String street;
     private String city;
     private String country;
-    private  int country_code;
+    @Column(name = "postal_code")
+    private  int postalCode;
     private double price;
     private String status; // order received, made, send, delivered
 }

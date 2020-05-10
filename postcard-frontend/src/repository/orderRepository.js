@@ -20,7 +20,7 @@ export async function saveOrder(order) {
         street: order.address.street,
         city: order.address.city,
         country: order.address.country,
-        country_code: order.address.countryCode,
+        postalCode: order.address.postalCode,
         price: order.price,
         status: "ordered"
     };

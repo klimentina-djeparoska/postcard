@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface OrderOnlineService {
     OrderOnline saveOrder(String id, String user_id, String postcard, String street, String city, String country,
-                    int country_code, double price, String status);
+                    int postalCode, double price, String status);
 
     List<OrderOnline> getAllOrdersForUser(String user_id);
 

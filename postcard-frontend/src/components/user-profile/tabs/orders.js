@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import "./tabs.css";
 import {Link} from "react-router-dom";
 import {getImage} from "../../../repository/imageRepository";
+import {Address} from "./addresses";
 
 const Orders = (props) => {
     return (
@@ -21,25 +22,7 @@ const Orders = (props) => {
                 <div className="col-12">
                     {props.orders.map(order =>
                         <div key={order.id} className="row mb-lg-5">
-                            <div className="col-6 border">
-                                <p className="text-middle font-italic mb-lg-5">Shipping address:</p>
-                                <div className="row">
-                                    <label className="col-4 font-italic">Street address: </label>
-                                    <span className="col-8 font-italic">{order.street}</span>
-                                </div>
-                                <div className="row">
-                                    <label className="col-4 font-italic">City: </label>
-                                    <span className="col-8 font-italic">{order.city}</span>
-                                </div>
-                                <div className="row">
-                                    <label className="col-4 font-italic">Country: </label>
-                                    <span className="col-8 font-italic">{order.country}</span>
-                                </div>
-                                <div className="row">
-                                    <label className="col-4 font-italic">Postal code: </label>
-                                    <span className="col-8 font-italic">{order['country_code']}</span>
-                                </div>
-                            </div>
+                            <Address className="col-6" address={order}/>
                             <div className="col-6 border border-left-0">
                                 <DisplayImage postcardId={order.postcardId}/>
                                 <div>

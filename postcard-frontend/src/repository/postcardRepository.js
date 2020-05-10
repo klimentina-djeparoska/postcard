@@ -7,7 +7,6 @@ export function getPostcard(id) {
     const url = postcardUrl + '/'+ id;
 
     fetch(url).then(res => res.json()).then(result => {
-        console.log(result);
         return result;
     }, error => console.error(error.message));
 
@@ -24,8 +23,6 @@ export async function savePostcard(postcard, user_uid) {
         font: postcard.font
     };
 
-    console.log("BODY:", body);
-
     const requestOptions = {
         method: "POST",
         headers: headers,
@@ -35,7 +32,6 @@ export async function savePostcard(postcard, user_uid) {
 
 
     const res = await fetch(postcardUrl + "/save", requestOptions).then(res => res.json()).then(result => {
-        console.log(result);
         return result;
     }).catch(error => console.error(error.message));
 
@@ -47,7 +43,6 @@ export function getAllPostcardsForUser(user_id) {
     const url = postcardUrl + "?user_id=" + user_id;
 
     fetch(url).then(res => res.json()).then( result => {
-        console.log(result);
         return result;
     }, error => console.error(error.message));
 }

@@ -22,3 +22,16 @@
         max-width: 100%;
     }
 }
+
+.custom-address {
+    flex: 0 0 45%;
+    max-width: 45%;
+    border: lightgrey solid 1px;
+    margin: 2%;
+}
+
+.custom-row {
+    width: 100%;
+    display: inline-flex;
+    flex-wrap: wrap;
+}

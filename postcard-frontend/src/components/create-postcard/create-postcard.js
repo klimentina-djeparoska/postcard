@@ -27,7 +27,7 @@ class CreatePostcard extends Component{
                 street:'',
                 city: '',
                 country: '',
-                countryCode: ''
+                postalCode: ''
             },
             price: 5,
             postcardTypes: [],
@@ -113,7 +113,7 @@ class CreatePostcard extends Component{
                     street: value,
                     city: this.state.address.city,
                     country: this.state.address.country,
-                    countryCode: this.state.address.countryCode
+                    postalCode: this.state.address.postalCode
                 };
                 return this.setState({address: address});}
             case "city": {
@@ -121,7 +121,7 @@ class CreatePostcard extends Component{
                     street: this.state.address.street,
                     city: value,
                     country: this.state.address.country,
-                    countryCode: this.state.address.countryCode
+                    postalCode: this.state.address.postalCode
                 };
                 return this.setState({address: address});
             }
@@ -130,18 +130,24 @@ class CreatePostcard extends Component{
                     street: this.state.address.street,
                     city: this.state.address.city,
                     country: value,
-                    countryCode: this.state.address.countryCode
+                    postalCode: this.state.address.postalCode
                 };
                 return this.setState({address: address});
             }
             case "postalCode": {
-                const address = {
-                    street: this.state.address.street,
-                    city: this.state.address.city,
-                    country: this.state.address.country,
-                    countryCode: value
-                };
-                return this.setState({address: address});
+                if (parseInt(value)) {
+                    const address = {
+                        street: this.state.address.street,
+                        city: this.state.address.city,
+                        country: this.state.address.country,
+                        postalCode: parseInt(value)
+                    };
+                    return this.setState({address: address});
+                } else {
+                    alert('Postal code must be a number!');
+                    return ;
+                }
+
             }
             default: return;
         }
@@ -156,30 +162,26 @@ class CreatePostcard extends Component{
     orderFinished() {
         const address = this.state.address;
 
-        if(parseInt(address.countryCode)) {
-            if(address.street && address.city && address.country && address.countryCode) {
-                const order = {
-                    user_uid: this.props.user.uid,
-                    postcard: this.state.postcard,
-                    address: this.state.address,
-                    image: this.state.image,
-                    price: this.state.price
-                };
+        if(address.street && address.city && address.country && address.postalCode) {
+            const order = {
+                user_uid: this.props.user.uid,
+                postcard: this.state.postcard,
+                address: this.state.address,
+                image: this.state.image,
+                price: this.state.price
+            };
 
-                saveOrder(order).then((res)=> {
-                    if(res==="success") {
-                        this.setState({
-                            phase: 4
-                        });
-                    }
-                });
-            } else {
-                alert(
-                    "Shipping address fields are mandatory!"
-                );
-            }
+            saveOrder(order).then((res)=> {
+                if(res==="success") {
+                    this.setState({
+                        phase: 4
+                    });
+                }
+            });
         } else {
-            alert("Postal code must be a number");
+            alert(
+                "Shipping address fields are mandatory!"
+            );
         }
     }
 
@@ -198,6 +200,12 @@ class CreatePostcard extends Component{
 
     componentWillUnmount() {
         this.controller.abort();
+    }
+
+    changeAddress(address) {
+        this.setState({
+            address: address
+        });
     }
 
     render() {
@@ -222,7 +230,7 @@ class CreatePostcard extends Component{
                     </div>
                     : this.state.phase === 3 ?
                             <div>
-                                <ShippingAddress address={this.state.address} price={this.state.price} onShippingAddressChange={(e)=> this.handleAddressChange(e)}/>
+                                <ShippingAddress onSelectedAddress={e => this.changeAddress(e)} user_uid={this.props.user.uid} address={this.state.address} price={this.state.price} onShippingAddressChange={(e)=> this.handleAddressChange(e)}/>
                                 <p className="text-middle font-italic">Make your order now</p>
                                 <button className="btn btn-secondary" onClick={()=>this.orderFinished()}>Order</button>
                             </div>

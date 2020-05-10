@@ -26,7 +26,7 @@ public class OrderApi {
 
         OrderOnline order = this.orderOnlineService.saveOrder(requestOrder.getId(), requestOrder.getUserId(),
                 requestOrder.getPostcardId(), requestOrder.getStreet(), requestOrder.getCity(), requestOrder.getCountry(),
-                requestOrder.getCountry_code(), requestOrder.getPrice(), requestOrder.getStatus());
+                requestOrder.getPostalCode(), requestOrder.getPrice(), requestOrder.getStatus());
 
         response.setHeader("Location", "/api/orders");
         return order;
